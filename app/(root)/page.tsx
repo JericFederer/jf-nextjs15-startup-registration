@@ -1,6 +1,8 @@
-import Navbar from "@/app/components/Navbar";
 import SearchForm from "@/app/components/SearchForm";
-// import StartupCard, { StartupTypeCard } from "@/app/components/StartupCard";
+import StartupCard, { StartupTypeCard } from "@/app/components/StartupCard";
+import { STARTUPS_QUERY } from "@/sanity/lib/queries";
+import { sanityFetch, SanityLive } from "@/sanity/lib/live";
+import { auth } from "@/auth";
 
 export default async function Home({
   searchParams,
@@ -8,6 +10,11 @@ export default async function Home({
   searchParams: Promise<{ query?: string }>;
 }) {
   const query = (await searchParams).query;
+  const params = { search: query || null };
+
+  // const session = await auth();
+
+  const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY, params });
 
   return (
     <>
@@ -29,7 +36,7 @@ export default async function Home({
           {query ? `Search results for "${query}"` : "All Startups"}
         </p>
 
-        {/* <ul className="mt-7 card_grid">
+        <ul className="mt-7 card_grid">
           {posts?.length > 0 ? (
             posts.map((post: StartupTypeCard) => (
               <StartupCard key={post?._id} post={post} />
@@ -37,8 +44,10 @@ export default async function Home({
           ) : (
             <p className="no-results">No startups found</p>
           )}
-        </ul> */}
+        </ul>
       </section>
+
+      <SanityLive />
     </>
   );
 }
