@@ -2,9 +2,9 @@ import { cn, formatDate } from "@/lib/utils";
 import { EyeIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-// import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Author, Startup } from "@/sanity/types";
-// import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export type StartupTypeCard = Omit<Startup, "author"> & { author?: Author };
 
@@ -33,7 +33,9 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
       <div className="flex-between mt-5 gap-5">
         <div className="flex-1">
           <Link href={`/user/${author?._id}`}>
-            <p className="text-16-medium line-clamp-1">{author?.name}</p>
+            <p className="text-16-medium line-clamp-1 transition-transform duration-300 hover:scale-105 hover:underline decoration-sky-500">
+              {author?.name}
+            </p>
           </Link>
           <Link href={`/startup/${_id}`}>
             <h3 className="text-26-semibold line-clamp-1">{title}</h3>
@@ -45,7 +47,7 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
             alt={author?.name!}
             width={48}
             height={48}
-            className="rounded-full"
+            className="rounded-full transition-transform duration-300 hover:scale-125"
           />
         </Link>
       </div>
@@ -60,22 +62,22 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
         <Link href={`/?query=${category?.toLowerCase()}`}>
           <p className="text-16-medium">{category}</p>
         </Link>
-        {/* <Button className="startup-card_btn" asChild>
+        <Button className="startup-card_btn" asChild>
           <Link href={`/startup/${_id}`}>Details</Link>
-        </Button> */}
+        </Button>
       </div>
     </li>
   );
 };
 
-// export const StartupCardSkeleton = () => (
-//   <>
-//     {[0, 1, 2, 3, 4].map((index: number) => (
-//       <li key={cn("skeleton", index)}>
-//         <Skeleton className="startup-card_skeleton" />
-//       </li>
-//     ))}
-//   </>
-// );
+export const StartupCardSkeleton = () => (
+  <>
+    {[0, 1, 2, 3, 4].map((index: number) => (
+      <li key={cn("skeleton", index)}>
+        <Skeleton className="startup-card_skeleton" />
+      </li>
+    ))}
+  </>
+);
 
 export default StartupCard;
