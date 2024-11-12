@@ -45,6 +45,10 @@ module.exports = {
   //     }
   //   ]
   // },
+  // ! `unstable_after` must be explicitly enabled by setting `experimental.after: true` in your next.config.js.
+  experimental: {
+    after: true, // Enable unstable_after feature
+  },
   // ! Error: Invalid src prop (https://avatars.githubusercontent.com/u/88467002?v=4) on next/image, hostname "avatars.githubusercontent.com" is not configured under images in your next.config.js
   images: {
     domains: ['avatars.githubusercontent.com'],  // Add this domain
