@@ -43,7 +43,12 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
       </section>
 
       <section className="section_container">
-        <img
+        {/* <img
+          src={post.image}
+          alt="thumbnail"
+          className="w-full h-auto rounded-xl"
+        /> */}
+        <Image
           src={post.image}
           alt="thumbnail"
           className="w-full h-auto rounded-xl"
