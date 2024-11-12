@@ -44,8 +44,8 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
         <Link href={`/user/${author?._id}`}>
           {
             author?.image && author?.name ? <Image
-              src={author?.image!}
-              alt={author?.name!}
+              src={author?.image}
+              alt={author?.name}
               width={48}
               height={48}
               className="rounded-full transition-transform duration-300 hover:scale-125"
