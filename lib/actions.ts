@@ -6,7 +6,8 @@ import slugify from "slugify";
 import { writeClient } from "@/sanity/lib/write-client";
 
 export const createPitch = async (
-  state: any, // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  state: any,
   form: FormData,
   pitch: string,
 ) => {

@@ -18,7 +18,8 @@ const StartupForm = () => {
   const { toast } = useToast();
   const router = useRouter();
 
-  const handleFormSubmit = async (prevState: any, formData: FormData) => { // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleFormSubmit = async (prevState: any, formData: FormData) => {
     try {
       const formValues = {
         title: formData.get("title") as string,
