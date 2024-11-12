@@ -44,7 +44,11 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  // ! Error: Invalid src prop (https://avatars.githubusercontent.com/u/88467002?v=4) on next/image, hostname "avatars.githubusercontent.com" is not configured under images in your next.config.js
+  images: {
+    domains: ['avatars.githubusercontent.com'],  // Add this domain
+  },
 };
 
 export default withSentryConfig(nextConfig, {
